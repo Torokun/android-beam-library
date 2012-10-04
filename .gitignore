@@ -11,15 +11,19 @@
 # generated files
 bin/
 gen/
+lint.xml
 
 # Local configuration file (sdk path, etc)
 local.properties
 
 #MAC
 .DS_Store
+tmp
 
 #eclipse
 .classpath
 .settings
 .project
+
+proguard-project.txt
 
