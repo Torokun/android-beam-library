@@ -20,4 +20,4 @@ Android Beamのライブラリ
 <h5>引数</h5>
 * intent : {Intent} Activityに受け取ったIntent
 
-TODO : サンプルプログラムの作成
+<h2>TODO : サンプルプログラムの作成</h2>
