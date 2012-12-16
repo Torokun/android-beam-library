@@ -2,3 +2,20 @@ android-beam-library
 ====================
 
 Android Beamのライブラリ
+
+このライブラリのAPIリファレンス
+BeamHelperクラス
+・コンストラクタ
+　public BeamHelper(Activity activity, String pushPackageName, String pushMessage, boolean isAAR)
+　　引数
+　　　activity : {Activity} Beamを送信するActivity
+　　　pushPackageName : {String} 送信するメッセージを受け取るアプリケーションのパッケージ名(通常、自アプリのパッケージ名を指定することが多いと思います)
+　　　pushMessage : {String} 送信するデータ
+　　　isAAR : {Boolean} Beamを受け取った際、受け取った端末がpushPackageNameに指定したアプリケーションがインストールされていない時にGoogle Playのアプリ画面を表示する(=true)か否か(=false)
+
+・静的メソッド
+　public static String getReceivedBeamString(Intent intent)
+　　　Beamを受け取った際に受け取ったデータをIntentから取り出し、取り出した文字列を返す
+　　　送信側のプログラムでBeamHelperのコンストラクタのpushMessageに指定した文字列になる
+　　引数
+　　　intent : {Intent} Activityに受け取ったIntent
