@@ -18,6 +18,7 @@ BeamHelperクラス
 <strong>public static String getReceivedBeamString(Intent intent)</strong></br>
 * Beamを受け取った際に受け取ったデータをIntentから取り出し、取り出した文字列を返す</br>
 * 送信側のプログラムでBeamHelperのコンストラクタのpushMessageに指定した文字列になる</br>
+
 引数</br>
 * intent : {Intent} Activityに受け取ったIntent</br>
 
