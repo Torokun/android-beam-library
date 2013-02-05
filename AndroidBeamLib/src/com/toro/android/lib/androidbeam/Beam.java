@@ -3,6 +3,7 @@ package com.toro.android.lib.androidbeam;
 
 import java.nio.charset.Charset;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.nfc.NdefMessage;
 import android.nfc.NdefRecord;
@@ -10,14 +11,16 @@ import android.nfc.NfcAdapter;
 import android.nfc.NfcAdapter.CreateNdefMessageCallback;
 import android.nfc.NfcEvent;
 
+@SuppressLint("NewApi")
 public class Beam extends BeamAppendHelper implements CreateNdefMessageCallback {
+    @SuppressWarnings("unused")
     private static final String TAG = "Beam";
 
     private Activity mActivity = null;
 
     private String mPushPackageName;
 
-    private String mPushMessage;
+    private byte[] mPushMessage;
 
     private boolean mIsAAR;
 
@@ -25,7 +28,7 @@ public class Beam extends BeamAppendHelper implements CreateNdefMessageCallback 
 
     private boolean nfcAdapterEnabled = false;
 
-    public Beam(Activity activity, String pushPackageName, String pushMessage, boolean isAAR) {
+    public Beam(Activity activity, String pushPackageName, byte[] pushMessage, boolean isAAR) {
         mActivity = activity;
         mPushPackageName = pushPackageName;
         mPushMessage = pushMessage;
@@ -48,7 +51,7 @@ public class Beam extends BeamAppendHelper implements CreateNdefMessageCallback 
     public NdefMessage createNdefMessage(NfcEvent event) {
         NdefRecord[] ndefRecord;
         String mime = "application/" + mPushPackageName;
-        NdefRecord mimeRecord = createMimeRecord(mime, mPushMessage.getBytes());
+        NdefRecord mimeRecord = createMimeRecord(mime, mPushMessage);
         if (mIsAAR) {
             ndefRecord = new NdefRecord[] {
                     mimeRecord, NdefRecord.createApplicationRecord(mPushPackageName)
