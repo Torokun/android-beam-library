@@ -15,7 +15,8 @@ public class BeamAppendHelper {
         }
     }
 
-    public static BeamAppendHelper createInstance(Activity activity, String pushPackageName, String pushMessage, boolean isAAR) {
+    public static BeamAppendHelper createInstance(Activity activity, String pushPackageName,
+            byte[] pushMessage, boolean isAAR) {
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
             return new BeamAppendHelper();
         }

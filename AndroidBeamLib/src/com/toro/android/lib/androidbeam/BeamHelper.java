@@ -5,7 +5,7 @@ import android.app.Activity;
 import android.content.Intent;
 
 public class BeamHelper {
-    
+    @SuppressWarnings("unused")
     private static String TAG = "BeamHelper";
 
     private static boolean mBeamSendAvailable;
@@ -34,6 +34,10 @@ public class BeamHelper {
     }
 
     public BeamHelper(Activity activity, String pushPackageName, String pushMessage, boolean isAAR) {
+        this(activity, pushPackageName, pushMessage.getBytes(), isAAR);
+    }
+
+    public BeamHelper(Activity activity, String pushPackageName, byte[] pushMessage, boolean isAAR) {
         if (mBeamSendAvailable) {
             mBeam = BeamAppendHelper.createInstance(activity, pushPackageName, pushMessage, isAAR);
         }
@@ -61,6 +65,13 @@ public class BeamHelper {
     public static String getReceivedBeamString(Intent intent) {
         if (mBeamReceiveAvailable) {
             return BeamReceiveHelper.getReceivedBeamString(intent);
+        }
+        return null;
+    }
+
+    public static byte[] getReceivedBeam(Intent intent) {
+        if (mBeamReceiveAvailable) {
+            return BeamReceiveHelper.getReceivedBeam(intent);
         }
         return null;
     }
